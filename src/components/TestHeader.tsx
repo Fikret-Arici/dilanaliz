@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Clock, Target, AlertTriangle } from 'lucide-react';
+import { Brain, Clock, Target, AlertTriangle, Home } from 'lucide-react';
 import { Language } from '../types/test';
 
 interface TestHeaderProps {
@@ -7,13 +7,15 @@ interface TestHeaderProps {
   totalQuestions: number;
   timeRemaining: number;
   language: Language;
+  onReturnToMain: () => void;
 }
 
 export const TestHeader: React.FC<TestHeaderProps> = ({
   currentQuestion,
   totalQuestions,
   timeRemaining,
-  language
+  language,
+  onReturnToMain
 }) => {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -61,6 +63,13 @@ export const TestHeader: React.FC<TestHeaderProps> = ({
           </div>
         </div>
         <div className="flex items-center space-x-3">
+          <button
+            onClick={onReturnToMain}
+            className="flex items-center space-x-2 bg-gray-50 hover:bg-gray-100 px-3 md:px-4 py-2 rounded-lg transition-colors duration-200"
+          >
+            <Home className="h-4 w-4 md:h-5 md:w-5 text-gray-600" />
+            <span className="text-gray-700 font-semibold text-sm md:text-base">Ana Menü</span>
+          </button>
           <div className="flex items-center space-x-2 bg-blue-50 px-3 md:px-4 py-2 rounded-lg">
             <span className="text-lg md:text-xl">{getLanguageFlag(language)}</span>
             <span className="text-blue-700 font-semibold text-sm md:text-base">{getLanguageName(language)}</span>

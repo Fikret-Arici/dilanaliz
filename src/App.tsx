@@ -28,7 +28,7 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
-  const [timeRemaining, setTimeRemaining] = useState(900); // 15 dakika
+  const [timeRemaining, setTimeRemaining] = useState(1200); // 20 dakika
   const [testResults, setTestResults] = useState<TestResult | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | number | null>(null);
   const [showSaveMessage, setShowSaveMessage] = useState(false);
@@ -127,7 +127,7 @@ function App() {
     
     // Set time based on test type
     // For now, a default duration or logic to set based on selectedLanguage if needed
-    setTimeRemaining(900); // Default to 15 minutes
+    setTimeRemaining(1200); // Default to 20 minutes
     
     setSelectedAnswer(null);
     setTestResults(null);
@@ -194,7 +194,7 @@ function App() {
     setSelectedLanguage(null);
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
-    setTimeRemaining(900);
+    setTimeRemaining(1200);
     setTestResults(null);
     setSelectedAnswer(null);
     
@@ -248,13 +248,14 @@ function App() {
           totalQuestions={languageQuestions.length}
           timeRemaining={timeRemaining}
           language={selectedLanguage}
+          onReturnToMain={handleRestartTest}
         />
 
         {/* Progress indicator */}
         <div className="bg-white rounded-lg shadow-md p-4 mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Progress</span>
-            <span className="text-sm text-gray-600">{answeredQuestions}/{languageQuestions.length} answered</span>
+            <span className="text-sm font-medium text-gray-700">İlerleme</span>
+            <span className="text-sm text-gray-600">{answeredQuestions}/{languageQuestions.length} cevaplandı</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
@@ -263,7 +264,7 @@ function App() {
             ></div>
           </div>
           <div className="text-center mt-2">
-            <span className="text-sm text-gray-600">{progressPercentage}% Complete</span>
+            <span className="text-sm text-gray-600">{progressPercentage}% Tamamlandı</span>
           </div>
         </div>
 
@@ -285,7 +286,7 @@ function App() {
             }`}
           >
             <ChevronLeft className="h-5 w-5" />
-            <span className="hidden sm:inline">Previous</span>
+            <span className="hidden sm:inline">Önceki</span>
           </button>
 
           <div className="flex items-center space-x-3">
@@ -294,14 +295,14 @@ function App() {
               className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
               <Save className="h-4 w-4" />
-              <span className="text-sm">Save</span>
+              <span className="text-sm">Kaydet</span>
             </button>
             
             <button
               onClick={() => handleFinishTest()}
               className="text-gray-600 hover:text-red-700 text-sm underline transition-colors duration-200"
             >
-              Finish early
+              Erken bitir
             </button>
           </div>
 
@@ -314,7 +315,7 @@ function App() {
                 : 'bg-gradient-to-r from-red-700 to-red-600 text-white hover:from-red-800 hover:to-red-700 shadow-md hover:shadow-lg transform hover:scale-105'
             }`}
           >
-            <span>{currentQuestionIndex === languageQuestions.length - 1 ? 'Finish Test' : 'Next'}</span>
+            <span>{currentQuestionIndex === languageQuestions.length - 1 ? 'Testi Bitir' : 'Sonraki'}</span>
             <ChevronRight className="h-5 w-5" />
           </button>
         </div>
@@ -323,7 +324,7 @@ function App() {
         {showSaveMessage && (
           <div className="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 z-50">
             <Save className="h-4 w-4" />
-            <span>Progress saved!</span>
+            <span>İlerleme kaydedildi!</span>
           </div>
         )}
 
@@ -331,7 +332,7 @@ function App() {
         {timeRemaining <= 300 && timeRemaining > 0 && (
           <div className="fixed top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 z-50">
             <AlertCircle className="h-4 w-4" />
-            <span>Time running out! ({Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')})</span>
+            <span>Süre azalıyor! ({Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')})</span>
         </div>
         )}
       </div>

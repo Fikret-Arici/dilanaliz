@@ -8,19 +8,19 @@ interface WelcomeScreenProps {
 const languageInfo: Record<string, { name: string; description: string }> = {
   english: {
     name: 'İngilizce',
-    description: 'Bu testte İngilizce dilinde gramer, kelime bilgisi ve okuma becerilerin ölçülecek. Test toplam 20 sorudan oluşur ve 15 dakika süren vardır.'
+    description: 'Bu testte İngilizce dilinde gramer, kelime bilgisi, okuma ve dinleme becerilerin ölçülecek. Test CEFR standartlarına uygun olarak hazırlanmıştır.'
   },
   french: {
     name: 'Fransızca',
-    description: 'Bu testte Fransızca dilinde gramer, kelime bilgisi ve okuma becerilerin ölçülecek. Test toplam 20 sorudan oluşur ve 15 dakika süren vardır.'
+    description: 'Bu testte Fransızca dilinde gramer, kelime bilgisi, okuma ve dinleme becerilerin ölçülecek. Test CEFR standartlarına uygun olarak hazırlanmıştır.'
   },
   german: {
     name: 'Almanca',
-    description: 'Bu testte Almanca dilinde gramer, kelime bilgisi ve okuma becerilerin ölçülecek. Test toplam 20 sorudan oluşur ve 15 dakika süren vardır.'
+    description: 'Bu testte Almanca dilinde gramer, kelime bilgisi, okuma ve dinleme becerilerin ölçülecek. Test CEFR standartlarına uygun olarak hazırlanmıştır.'
   },
   italian: {
     name: 'İtalyanca',
-    description: 'Bu testte İtalyanca dilinde gramer, kelime bilgisi ve okuma becerilerin ölçülecek. Test toplam 20 sorudan oluşur ve 15 dakika süren vardır.'
+    description: 'Bu testte İtalyanca dilinde gramer, kelime bilgisi, okuma ve dinleme becerilerin ölçülecek. Test CEFR standartlarına uygun olarak hazırlanmıştır.'
   }
 };
 
@@ -32,10 +32,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartTest, selec
         <h1 className="text-3xl font-bold text-red-800 mb-4">{info.name} Seviye Belirleme Testi</h1>
         <p className="text-gray-700 text-lg mb-6">{info.description}</p>
         <ul className="text-left text-gray-700 mb-6 space-y-2">
-          <li>• <b>20 soru</b> (çoktan seçmeli)</li>
-          <li>• <b>15 dakika</b> süre</li>
-          <li>• Gramer, kelime ve okuma becerileri</li>
-          <li>• Sonuçlar ve seviye analizi anında</li>
+          <li>• <b>Kapsamlı soru seti</b> (100+ soru)</li>
+          <li>• <b>20 dakika</b> süre</li>
+          <li>• Gramer, kelime, okuma ve dinleme becerileri</li>
+          <li>• CEFR standartlarına uygun seviye belirleme</li>
+          <li>• Detaylı analiz ve öneriler</li>
         </ul>
         <button
           onClick={onStartTest}

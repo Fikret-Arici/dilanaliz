@@ -43,7 +43,12 @@ export const LanguageSelection: React.FC<LanguageSelectionProps> = ({ onLanguage
       <div className="w-full max-w-2xl mx-auto p-6">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Hoş Geldiniz!</h1>
-          <p className="text-red-100 text-lg mb-4">Seviye belirleme testi için bir dil seçin.</p>
+          <p className="text-red-100 text-lg mb-4">CEFR standartlarına uygun seviye belirleme testi için bir dil seçin.</p>
+          <div className="bg-white/10 rounded-lg p-4 mt-4">
+            <p className="text-red-100 text-sm">
+              <strong>CEFR Seviyeleri:</strong> A1 (Başlangıç) → A2 (Temel) → B1 (Orta) → B2 (Orta-üstü) → C1 (İleri) → C2 (Ustalık)
+            </p>
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {languages.map((language) => (
