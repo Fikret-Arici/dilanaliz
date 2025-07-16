@@ -31,10 +31,10 @@ export const TestHeader: React.FC<TestHeaderProps> = ({
 
   const getLanguageName = (lang: Language) => {
     const names = {
-      english: 'English',
-      french: 'French',
-      german: 'German',
-      italian: 'Italian'
+      english: 'İngilizce',
+      french: 'Fransızca',
+      german: 'Almanca',
+      italian: 'İtalyanca'
     };
     return names[lang];
   };
@@ -58,7 +58,7 @@ export const TestHeader: React.FC<TestHeaderProps> = ({
         <div className="flex items-center space-x-3">
           <img src="/logo.jpg" alt="Academico" className="h-8 w-8 md:h-10 md:w-10 rounded-lg" />
           <div>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-900">{getLanguageName(language)} Level Assessment</h1>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">{getLanguageName(language)} Seviye Belirleme</h1>
             <p className="text-gray-600 text-sm md:text-base">AI-Powered Analysis</p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export const TestHeader: React.FC<TestHeaderProps> = ({
           <div className="flex items-center space-x-2">
             <Target className="h-4 w-4 md:h-5 md:w-5 text-amber-600" />
             <span className="text-gray-700 text-sm md:text-base">
-              Question {currentQuestion} of {totalQuestions}
+              Soru {currentQuestion} / {totalQuestions}
             </span>
           </div>
           <div className="w-full sm:w-64 bg-gray-200 rounded-full h-2">
@@ -110,7 +110,7 @@ export const TestHeader: React.FC<TestHeaderProps> = ({
             {formatTime(timeRemaining)}
           </span>
           {isTimeWarning && (
-            <span className="text-xs font-medium">Time running out!</span>
+            <span className="text-xs font-medium">Süre azalıyor!</span>
           )}
         </div>
       </div>
@@ -118,7 +118,7 @@ export const TestHeader: React.FC<TestHeaderProps> = ({
       {/* Mobile Progress Bar */}
       <div className="block lg:hidden mt-4">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs text-gray-600">Progress</span>
+          <span className="text-xs text-gray-600">İlerleme</span>
           <span className="text-xs text-gray-600">{Math.round((currentQuestion / totalQuestions) * 100)}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1">

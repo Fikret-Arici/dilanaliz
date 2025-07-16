@@ -32,7 +32,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartTest, selec
         <h1 className="text-3xl font-bold text-red-800 mb-4">{info.name} Seviye Belirleme Testi</h1>
         <p className="text-gray-700 text-lg mb-6">{info.description}</p>
         <ul className="text-left text-gray-700 mb-6 space-y-2">
-          <li>• <b>Kapsamlı soru seti</b> (100+ soru)</li>
+          <li>• <b>Kapsamlı soru seti</b> (20+ soru)</li>
           <li>• <b>20 dakika</b> süre</li>
           <li>• Gramer, kelime, okuma ve dinleme becerileri</li>
           <li>• CEFR standartlarına uygun seviye belirleme</li>
