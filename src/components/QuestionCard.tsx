@@ -1,6 +1,8 @@
 import React from 'react';
 import { Question } from '../types/test';
 import { CheckCircle, Circle, BookOpen, Edit3, Headphones } from 'lucide-react';
+import { ListeningQuestion } from './ListeningQuestion';
+import { ReadingQuestion } from './ReadingQuestion';
 
 interface QuestionCardProps {
   question: Question;
@@ -65,6 +67,28 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     }
   };
 
+  // Özel soru tipleri için ayrı bileşenler kullan
+  if (question.type === 'listening') {
+    return (
+      <ListeningQuestion
+        question={question}
+        selectedAnswer={selectedAnswer}
+        onAnswerSelect={onAnswerSelect}
+      />
+    );
+  }
+
+  if (question.type === 'reading-comprehension') {
+    return (
+      <ReadingQuestion
+        question={question}
+        selectedAnswer={selectedAnswer}
+        onAnswerSelect={onAnswerSelect}
+      />
+    );
+  }
+
+  // Standart multiple-choice ve fill-blank sorular için
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
       {/* Question Header */}
@@ -151,37 +175,6 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               <span className="font-medium text-sm sm:text-base">{option}</span>
             </button>
           ))}
-        </div>
-      )}
-
-      {question.type === 'reading-comprehension' && question.options && (
-        <div className="space-y-4">
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-            <p className="text-green-800 text-sm font-medium mb-2">Reading passage:</p>
-            <p className="text-green-900 leading-relaxed">{question.question}</p>
-          </div>
-          <div className="space-y-3">
-            {question.options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => onAnswerSelect(index)}
-                className={`w-full p-4 rounded-lg border-2 transition-all duration-200 flex items-center space-x-3 text-left hover:shadow-md ${
-                  selectedAnswer === index
-                    ? 'border-green-700 bg-green-50 text-green-900 shadow-md'
-                    : 'border-gray-200 hover:border-green-300 hover:bg-green-25'
-                }`}
-              >
-                <div className="flex-shrink-0">
-                  {selectedAnswer === index ? (
-                    <CheckCircle className="h-5 w-5 text-green-700" />
-                  ) : (
-                    <Circle className="h-5 w-5 text-gray-400" />
-                  )}
-                </div>
-                <span className="font-medium text-sm sm:text-base">{option}</span>
-              </button>
-            ))}
-          </div>
         </div>
       )}
     </div>

@@ -11,6 +11,13 @@ export interface Question {
   correctAnswer: string | number;
   explanation: string;
   points: number;
+  // Yeni alanlar
+  audioUrl?: string; // Listening soruları için ses dosyası
+  readingPassage?: string; // Reading soruları için uzun metin
+  transcript?: string; // Listening soruları için transkript
+  imageUrl?: string; // Görsel destekli sorular için
+  difficulty?: 'easy' | 'medium' | 'hard'; // Soru zorluğu
+  timeLimit?: number; // Soru başına süre sınırı (saniye)
 }
 
 export interface TestResult {
